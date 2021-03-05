@@ -1,4 +1,3 @@
-from Controller import validate
 from View import login
 
 if __name__=="__main__":

@@ -1,4 +1,10 @@
 
-def validate_onlyLetters(**kwargs):
-    for key, value in kwargs.items(): 
-        print ("%s == %s" %(key, value))
+def validate_login(**kwargs):
+    validateEmail(kwargs["email"])    
+
+def validateEmail(email):
+    return True
+
+def validatePassword(password):
+    return True
+

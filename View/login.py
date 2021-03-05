@@ -1,5 +1,5 @@
 import tkinter
-from Controller import validate
+from Controller.LoginController import LoginController
 
 def window_login():
     window = tkinter.Tk()
@@ -25,7 +25,7 @@ def window_login():
     input_password = tkinter.Entry(window,textvariable=entry_password,show="*")
     input_password.place(x=150,y=200,width=300,height=30)
 
-    button_setBarcode = tkinter.Button(window,text="Iniciar sesión",bg="#C2C2C2",fg="#000000",width="20",command=lambda:validate.validate_onlyLetters(email=entry_email.get(),password=entry_password.get()))
+    button_setBarcode = tkinter.Button(window,text="Iniciar sesión",bg="#C2C2C2",fg="#000000",width="20",command=lambda:LoginController.function_login(email=entry_email.get(),password=entry_password.get()))
     button_setBarcode.place(x=220,y=270)
 
     window.mainloop()
