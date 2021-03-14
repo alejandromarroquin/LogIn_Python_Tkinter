@@ -1,8 +1,5 @@
-
 from Model.User import User
 from Traits.UserTrait import UserTrait
-from tkinter import messagebox
-
 class LoginController:
 
     @staticmethod
@@ -11,7 +8,8 @@ class LoginController:
         user.email=kwargs["email"]
         user.password=kwargs["password"]
         login=UserTrait()
-        if(login.login(user)[0]):
-            messagebox.showinfo(title="Success",message="Acceso correcto")
+        login=login.login(user)
+        if(login[0]):
+            return True,login[1]
         else:
-            messagebox.showinfo(title="Error",message="Acceso incorrecto")
+            return False,None

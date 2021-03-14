@@ -11,3 +11,4 @@ class Connect:
             db="pharmacy_sspc"
         )
         return config
+            
