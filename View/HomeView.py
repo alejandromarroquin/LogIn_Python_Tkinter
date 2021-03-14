@@ -29,6 +29,30 @@ class UserAdmin(HomeView):
         label = tkinter.Label(self.sidebar,text="Home Usario Administrador",fg="white",bg="#1B2631",height="3")
         label.pack()
 
+        option_registeruser = tkinter.Label(self.sidebar,text="Registrar Usuario",fg="white",bg="#1B2631",height=3,borderwidth=1, relief="flat",cursor="hand2")
+        option_registeruser.bind('<Button-1>',self.registerUser)
+        option_registeruser.pack(fill=tkinter.BOTH)
+
+        option1 = tkinter.Label(self.sidebar,text="Opción 1",fg="white",bg="#1B2631",height=3,borderwidth=1, relief="flat",cursor="hand2")
+        option1.pack(fill=tkinter.BOTH)
+        option1.bind('<Button-1>',self.actions_option1)
+
+        option2 = tkinter.Label(self.sidebar,text="Opción 2",fg="white",bg="#1B2631",height=3,borderwidth=1, relief="flat",cursor="hand2")
+        option2.pack(fill=tkinter.BOTH)
+        option2.bind('<Button-1>',self.actions_option2)
+
+    @staticmethod
+    def registerUser(event):
+        print('Aquí se registra un usuario')
+
+    @staticmethod
+    def actions_option1(event):
+        print('Aquí se realizan las acciones de la opción 1')
+
+    @staticmethod
+    def actions_option2(event):
+        print('Aquí se realizan las acciones de la opción 2')
+
 class UserA(HomeView):
 
     def window_userA(self):
@@ -36,9 +60,57 @@ class UserA(HomeView):
         label = tkinter.Label(self.sidebar,text="Home Usuario Tipo A",fg="white",bg="#1B2631",height="3")
         label.pack()
 
+        option1 = tkinter.Label(self.sidebar,text="Opción 1A",fg="white",bg="#1B2631",height=3,borderwidth=1, relief="flat",cursor="hand2")
+        option1.bind('<Button-1>',self.actions_option1)
+        option1.pack(fill=tkinter.BOTH)
+
+        option2 = tkinter.Label(self.sidebar,text="Opción 2A",fg="white",bg="#1B2631",height=3,borderwidth=1, relief="flat",cursor="hand2")
+        option2.pack(fill=tkinter.BOTH)
+        option2.bind('<Button-1>',self.actions_option2)
+
+        option3 = tkinter.Label(self.sidebar,text="Opción 3A",fg="white",bg="#1B2631",height=3,borderwidth=1, relief="flat",cursor="hand2")
+        option3.pack(fill=tkinter.BOTH)
+        option3.bind('<Button-1>',self.actions_option3)
+
+    @staticmethod
+    def actions_option1(event):
+        print('Aquí se realizan las acciones de la opción 1A')
+
+    @staticmethod
+    def actions_option2(event):
+        print('Aquí se realizan las acciones de la opción 2A')
+
+    @staticmethod
+    def actions_option3(event):
+        print('Aquí se realizan las acciones de la opción 3A')
+
 class UserB(HomeView):
 
     def window_userB(self):
         self.window_home()
         label = tkinter.Label(self.sidebar,text="Home Usuario Tipo B",fg="white",bg="#1B2631",height="3")
         label.pack()
+
+        option1 = tkinter.Label(self.sidebar,text="Opción 1B",fg="white",bg="#1B2631",height=3,borderwidth=1, relief="flat",cursor="hand2")
+        option1.bind('<Button-1>',self.actions_option1)
+        option1.pack(fill=tkinter.BOTH)
+
+        option2 = tkinter.Label(self.sidebar,text="Opción 2B",fg="white",bg="#1B2631",height=3,borderwidth=1, relief="flat",cursor="hand2")
+        option2.pack(fill=tkinter.BOTH)
+        option2.bind('<Button-1>',self.actions_option2)
+
+        option3 = tkinter.Label(self.sidebar,text="Opción 3B",fg="white",bg="#1B2631",height=3,borderwidth=1, relief="flat",cursor="hand2")
+        option3.pack(fill=tkinter.BOTH)
+        option3.bind('<Button-1>',self.actions_option3)
+
+    @staticmethod
+    def actions_option1(event):
+        print('Aquí se realizan las acciones de la opción 1B')
+
+    @staticmethod
+    def actions_option2(event):
+        print('Aquí se realizan las acciones de la opción 2B')
+
+    @staticmethod
+    def actions_option3(event):
+        print('Aquí se realizan las acciones de la opción 3B')
