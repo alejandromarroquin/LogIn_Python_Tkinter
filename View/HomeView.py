@@ -1,3 +1,8 @@
+# title: Login and Users System
+# description: HomeView Class build the main view 
+# author: Alejandro Marroquín Cruz
+# contact: alejandroc.marroquin@gmail.com
+
 import tkinter
 
 class HomeView:
@@ -5,6 +10,7 @@ class HomeView:
     def __init__(self):
         self.window=None
         self.sidebar=None
+        self.mainarea=None
 
 
     def window_home(self):
@@ -18,8 +24,8 @@ class HomeView:
         self.sidebar = tkinter.Frame(self.window, width=200, bg='#1B2631', height=550, borderwidth=2)
         self.sidebar.pack(expand=False, fill='both', side='left', anchor='nw')
         # main content area
-        mainarea = tkinter.Frame(self.window, width=500, height=500)
-        mainarea.pack(expand=True, fill='both', side='right')
+        self.mainarea = tkinter.Frame(self.window, width=500, height=500)
+        self.mainarea.pack(expand=True, fill='both', side='right')
 
 
 class UserAdmin(HomeView):
@@ -41,17 +47,34 @@ class UserAdmin(HomeView):
         option2.pack(fill=tkinter.BOTH)
         option2.bind('<Button-1>',self.actions_option2)
 
-    @staticmethod
-    def registerUser(event):
-        print('Aquí se registra un usuario')
+        option2 = tkinter.Label(self.sidebar,text="Cerrar sesión",fg="white",bg="#1B2631",height=3,borderwidth=1, relief="flat",cursor="hand2")
+        option2.pack(fill=tkinter.BOTH)
+        option2.bind('<Button-1>',self.cerrar_sesion)
 
-    @staticmethod
-    def actions_option1(event):
-        print('Aquí se realizan las acciones de la opción 1')
+    def registerUser(self,event):
+        self.mainarea.destroy()
+        self.mainarea = tkinter.Frame(self.window, width=500, height=500)
+        self.mainarea.pack(expand=True, fill='both', side='right')
+        label = tkinter.Label(self.mainarea,text="Registrar Usuario",height="3")
+        label.pack()
 
-    @staticmethod
-    def actions_option2(event):
-        print('Aquí se realizan las acciones de la opción 2')
+    def actions_option1(self,event):
+        self.mainarea.destroy()
+        self.mainarea = tkinter.Frame(self.window, width=500, height=500)
+        self.mainarea.pack(expand=True, fill='both', side='right')
+        label = tkinter.Label(self.mainarea,text="Vista de la opción 1",height="3")
+        label.pack()
+
+    def actions_option2(self,event):
+        self.mainarea.destroy()
+        self.mainarea = tkinter.Frame(self.window, width=500, height=500)
+        self.mainarea.pack(expand=True, fill='both', side='right')
+        label = tkinter.Label(self.mainarea,text="Vista de la opción 2",height="3")
+        label.pack()
+    
+    def cerrar_sesion(self,event):
+        self.window.destroy()
+
 
 class UserA(HomeView):
 
