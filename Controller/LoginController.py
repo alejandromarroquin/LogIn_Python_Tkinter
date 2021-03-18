@@ -1,3 +1,9 @@
+# title: Login and Users System
+# class: LoginController
+# description: Controls access to the system
+# author: Alejandro Marroquín Cruz
+# contact: alejandroc.marroquin@gmail.com
+
 from Model.User import User
 from Traits.UserTrait import UserTrait
 class LoginController:

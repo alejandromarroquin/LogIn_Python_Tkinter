@@ -1,11 +1,28 @@
+# title: Login and Users System
+# class: User
+# description: User Class build an object with attributes and methods Getter and Setter 
+# author: Alejandro Marroquín Cruz
+# contact: alejandroc.marroquin@gmail.com
+
 from Traits import UserTrait
 
 class User:
 
     def __init__(self):
+        self._name=""
         self._email=""
         self._password=""
         self._type=""
+
+    #Getter name
+    @property
+    def name(self):
+        return self._name
+
+    #Setter name
+    @name.setter
+    def name(self, name):
+        self._name=name
 
     #Getter email
     @property

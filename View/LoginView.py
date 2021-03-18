@@ -1,3 +1,9 @@
+# title: Login and Users System
+# class: LoginView
+# description: Build the login view
+# author: Alejandro Marroquín Cruz
+# contact: alejandroc.marroquin@gmail.com
+
 import tkinter
 from Controller.LoginController import LoginController
 from tkinter import messagebox
@@ -35,8 +41,8 @@ class LoginView:
         input_password = tkinter.Entry(self.window,textvariable=self.entry_password,show="*")
         input_password.place(x=150,y=200,width=300,height=30)
 
-        button_setBarcode = tkinter.Button(self.window,text="Iniciar sesión",bg="#C2C2C2",fg="#000000",width="20",command=lambda:self.login())
-        button_setBarcode.place(x=220,y=270)
+        button_login = tkinter.Button(self.window,text="Iniciar sesión",bg="#C2C2C2",fg="#000000",width="20",command=lambda:self.login())
+        button_login.place(x=220,y=270)
 
         self.window.mainloop()
 

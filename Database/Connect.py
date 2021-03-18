@@ -8,7 +8,7 @@ class Connect:
             host="localhost",
             user="root",
             passwd="",
-            db="pharmacy_sspc"
+            db="login_system"
         )
         return config
             

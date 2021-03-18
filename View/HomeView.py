@@ -1,9 +1,13 @@
 # title: Login and Users System
-# description: HomeView Class build the main view 
+# class: HomeView
+# description: Build the main view for the type of user that logged in
 # author: Alejandro Marroquín Cruz
 # contact: alejandroc.marroquin@gmail.com
 
 import tkinter
+from tkinter import messagebox
+from tkinter import ttk
+from Controller.UserController import UserController
 
 class HomeView:
 
@@ -36,8 +40,8 @@ class UserAdmin(HomeView):
         label.pack()
 
         option_registeruser = tkinter.Label(self.sidebar,text="Registrar Usuario",fg="white",bg="#1B2631",height=3,borderwidth=1, relief="flat",cursor="hand2")
-        option_registeruser.bind('<Button-1>',self.registerUser)
         option_registeruser.pack(fill=tkinter.BOTH)
+        option_registeruser.bind('<Button-1>',self.frame_registerUser)
 
         option1 = tkinter.Label(self.sidebar,text="Opción 1",fg="white",bg="#1B2631",height=3,borderwidth=1, relief="flat",cursor="hand2")
         option1.pack(fill=tkinter.BOTH)
@@ -51,12 +55,46 @@ class UserAdmin(HomeView):
         option2.pack(fill=tkinter.BOTH)
         option2.bind('<Button-1>',self.cerrar_sesion)
 
-    def registerUser(self,event):
+    def frame_registerUser(self,event):
         self.mainarea.destroy()
         self.mainarea = tkinter.Frame(self.window, width=500, height=500)
         self.mainarea.pack(expand=True, fill='both', side='right')
         label = tkinter.Label(self.mainarea,text="Registrar Usuario",height="3")
         label.pack()
+
+        name = tkinter.Label(self.mainarea,text="Nombre:",height=3,borderwidth=1, relief="flat")
+        name.place(x=150,y=80)
+        entry_name = tkinter.StringVar()
+        input_name = tkinter.Entry(self.mainarea,textvariable=entry_name)
+        input_name.place(x=280,y=90,width=350,height=30)
+
+        email = tkinter.Label(self.mainarea,text="Correo:",height=3,borderwidth=1, relief="flat")
+        email.place(x=150,y=160)
+        entry_email = tkinter.StringVar()
+        input_email = tkinter.Entry(self.mainarea,textvariable=entry_email)
+        input_email.place(x=280,y=170,width=350,height=30)
+
+        password = tkinter.Label(self.mainarea,text="Contraseña:",height=3,borderwidth=1, relief="flat")
+        password.place(x=150,y=240)
+        entry_password = tkinter.StringVar()
+        input_password = tkinter.Entry(self.mainarea,textvariable=entry_password,show="*")
+        input_password.place(x=280,y=250,width=350,height=30)
+
+        typeuser = tkinter.Label(self.mainarea,text="Tipo de Usuario:",height=3,borderwidth=1, relief="flat")
+        typeuser.place(x=150,y=320)
+        entry_typeuser = tkinter.StringVar()
+        input_typeuser = ttk.Combobox(self.mainarea, textvariable=entry_typeuser, values=["Administrador", "Usuario A", "Usuario B", "Usuario C"])
+        input_typeuser.place(x=280,y=330,width=350,height=30)
+
+        button_registeruser = tkinter.Button(self.window,text="Registrar",bg="#C2C2C2",fg="#000000",width="20",command=lambda:self.registerUser(entry_name,entry_email,entry_password,entry_typeuser))
+        button_registeruser.place(x=500,y=430)
+
+    @staticmethod
+    def registerUser(name,email,password,typeuser):
+        usercontroll=UserController()
+        if usercontroll.store(name=name.get(),email=email.get(),password=password.get(),type=typeuser.get()):
+            messagebox.showinfo(title="Success",message="Registro correcto")
+
 
     def actions_option1(self,event):
         self.mainarea.destroy()
