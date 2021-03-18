@@ -5,7 +5,6 @@
 # contact: alejandroc.marroquin@gmail.com
 
 from Model.User import User
-from Traits.UserTrait import UserTrait
 
 class UserController:
 
@@ -18,7 +17,7 @@ class UserController:
         user.email=kwargs["email"]
         user.password=kwargs["password"]
         user.type=self.typeUser(kwargs["type"])
-        return UserTrait.resgisterUser(user)
+        return user.resgisterUser()
 
     @staticmethod
     def typeUser(typeuser):

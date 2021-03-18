@@ -4,7 +4,9 @@
 # author: Alejandro Marroquín Cruz
 # contact: alejandroc.marroquin@gmail.com
 
-from Traits import UserTrait
+from Database.Connect import Connect
+from tkinter import messagebox
+import hashlib
 
 class User:
 
@@ -53,3 +55,29 @@ class User:
     @type.setter
     def type(self,type):
         self._type=type
+
+    @staticmethod
+    def login(email,password):
+        try:
+            connection=Connect()
+            db=connection.config_connect()
+            fcursor=db.cursor()
+            result=fcursor.execute("SELECT name,type FROM User WHERE email=%(email)s AND password=%(password)s",{'email':email,'password':hashlib.sha256(str(password).encode('utf-8')).hexdigest()})
+            data=fcursor.fetchall()
+            db.close()
+            return result,data
+        except:
+            messagebox.showerror(title="Error",message="Error al establecer conexión con la base de datos")
+            return 0,None
+
+    def resgisterUser(self):
+        try:
+            connection=Connect()
+            db=connection.config_connect()
+            fcursor=db.cursor()
+            fcursor.execute("INSERT INTO User (name, email, password, type) VALUES (%(name)s, %(email)s, %(password)s, %(type)s)",{'name':self.name,'email':self.email,'password':hashlib.sha256(str(self.password).encode('utf-8')).hexdigest(),'type':self.type})
+            db.commit()
+            return True
+        except:
+            messagebox.showerror(title="Error",message="Error al establecer conexión con la base de datos")
+            return False
